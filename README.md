@@ -1,6 +1,7 @@
 # Catalogo Turismo
 
-Un catalogo web de lugares turisticos de El Salvador hecho con Laravel. La idea era mostrar una lista de destinos (volcanes, playas, pueblos coloniales, rutas de cafe, etc.) con su precio, horario, ubicacion y descripcion, y dar un formulario de contacto por si alguien quiere preguntar algo.
+Un catalogo web de lugares turisticos de El Salvador hecho con Laravel. La idea era mostrar una lista de destinos (volcanes, playas, pueblos coloniales, rutas de cafe, etc.) con su precio, horario, ubicacion y descripcion, y dar un formulario de contacto por si alguien quiere preguntar algo. 
+<br>⚠️ ¡Importante!, las imagenes estan en la carpeta `imagenes_aplicacion/` 
 
 ## Que tiene
 
