@@ -1,34 +1,24 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Factories;
 
 use App\Models\Lugar;
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DatabaseSeeder extends Seeder
+/**
+ * @extends Factory<Lugar>
+ */
+class LugarFactory extends Factory
 {
-    use WithoutModelEvents;
+    protected $model = Lugar::class;
 
-    /**
-     * Seed the application's database.
-     */
-    public function run(): void
+    public function definition(): array
     {
-        User::firstOrCreate([
-            'email' => 'test@example.com',
-        ], [
-            'name' => 'Test User',
-            'password' => bcrypt('password'),
-        ]);
-
         $lugares = [
             [
                 'titulo' => 'Volcán de Santa Ana',
                 'departamento' => 'Santa Ana',
                 'categoria' => 'Aventura',
-                'precio' => 25.00,
                 'descripcion' => 'Ascenso panorámico por senderos volcánicos con vista al lago de Coatepeque.',
                 'ubicacion' => 'Parque Nacional Cerro Verde, Santa Ana',
                 'horario' => '7:00 - 18:00',
@@ -38,7 +28,6 @@ class DatabaseSeeder extends Seeder
                 'titulo' => 'Ruta de las Flores',
                 'departamento' => 'Ahuachapán',
                 'categoria' => 'Cultural',
-                'precio' => 15.00,
                 'descripcion' => 'Recorrido por pueblos llenos de flores, cafés de altura y mercados artesanales.',
                 'ubicacion' => 'Ahuachapán',
                 'horario' => '9:00 - 17:00',
@@ -48,7 +37,6 @@ class DatabaseSeeder extends Seeder
                 'titulo' => 'Lago de Coatepeque',
                 'departamento' => 'Santa Ana',
                 'categoria' => 'Naturaleza',
-                'precio' => 12.50,
                 'descripcion' => 'Disfruta paseos en bote, restaurantes frente al lago y atardeceres espectaculares.',
                 'ubicacion' => 'Lago de Coatepeque, Santa Ana',
                 'horario' => '8:00 - 19:00',
@@ -58,7 +46,6 @@ class DatabaseSeeder extends Seeder
                 'titulo' => 'Playa El Cuco',
                 'departamento' => 'La Libertad',
                 'categoria' => 'Playa',
-                'precio' => 30.00,
                 'descripcion' => 'Surf, arena dorada y un ambiente relajado ideal para familias y grupos.',
                 'ubicacion' => 'El Cuco, La Libertad',
                 'horario' => '6:00 - 18:00',
@@ -68,46 +55,24 @@ class DatabaseSeeder extends Seeder
                 'titulo' => 'Suchitoto Colonial',
                 'departamento' => 'Cuscatlán',
                 'categoria' => 'Histórico',
-                'precio' => 10.00,
                 'descripcion' => 'Caminatas por calles empedradas, galerías de arte y cultura local en cada esquina.',
                 'ubicacion' => 'Suchitoto, Cuscatlán',
                 'horario' => '9:00 - 18:00',
                 'imagen' => 'https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?auto=format&fit=crop&w=1200&q=80',
             ],
-            [
-                'titulo' => 'Parque Nacional El Imposible',
-                'departamento' => 'Ahuachapán',
-                'categoria' => 'Aventura',
-                'precio' => 22.00,
-                'descripcion' => 'Senderos en bosque tropical y avistamiento de fauna nativa en un parque protegido.',
-                'ubicacion' => 'El Imposible, Ahuachapán',
-                'horario' => '7:30 - 17:00',
-                'imagen' => 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80',
-            ],
-            [
-                'titulo' => 'Ruta del Café',
-                'departamento' => 'Sonsonate',
-                'categoria' => 'Gastronómico',
-                'precio' => 18.00,
-                'descripcion' => 'Degustaciones de café de altura y visita a fincas con métodos de cultivo sostenible.',
-                'ubicacion' => 'Sonsonate',
-                'horario' => '8:00 - 16:00',
-                'imagen' => 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80',
-            ],
-            [
-                'titulo' => 'Playa El Tunco',
-                'departamento' => 'La Libertad',
-                'categoria' => 'Surf',
-                'precio' => 28.00,
-                'descripcion' => 'Famosa por sus olas, vida nocturna y ambiente surfero junto al océano Pacífico.',
-                'ubicacion' => 'El Tunco, La Libertad',
-                'horario' => '6:00 - 19:00',
-                'imagen' => 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
-            ],
         ];
 
-        foreach ($lugares as $lugar) {
-            Lugar::create($lugar);
-        }
+        $lugar = fake()->randomElement($lugares);
+
+        return [
+            'titulo' => $lugar['titulo'],
+            'departamento' => $lugar['departamento'],
+            'categoria' => $lugar['categoria'],
+            'precio' => fake()->randomFloat(2, 10, 40),
+            'descripcion' => $lugar['descripcion'],
+            'ubicacion' => $lugar['ubicacion'],
+            'horario' => $lugar['horario'],
+            'imagen' => $lugar['imagen'],
+        ];
     }
 }
